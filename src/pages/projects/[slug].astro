@@ -1,0 +1,210 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getProject, projects } from '../../data/projects';
+
+export async function getStaticPaths() {
+  return projects.map((project) => ({ params: { slug: project.slug } }));
+}
+
+const slug = Astro.params.slug as string;
+const project = getProject(slug);
+
+if (!project) {
+  throw new Error(`Project not found: ${slug}`);
+}
+---
+
+<Layout title={`${project.title} — Portfolio`}>
+  <main class="detail-page">
+    <section class="detail-top-grid">
+      <div class="detail-media reveal">
+        <div class="screenshot-grid">
+          {project.screenshots && project.screenshots.length > 0 ? (
+            project.screenshots.map((src) => (
+              <img src={src} alt={`${project.title} screenshot`} />
+            ))
+          ) : (
+            <div class="screenshot-placeholder">
+              <p>Screenshot area</p>
+              <small>Replace with real screenshots later</small>
+            </div>
+          )}
+        </div>
+
+        <div class="tech-list">
+          {project.tech.map((tool) => (
+            <span>{tool}</span>
+          ))}
+        </div>
+      </div>
+
+      <div class="detail-copy reveal">
+        <p class="eyebrow">Project highlight</p>
+        <h1>{project.title}</h1>
+        <p class="intro">{project.summary}</p>
+        <p class="story">{project.story}</p>
+        <div class="detail-links">
+          <a class="button" href={project.url ?? '#'}>Live demo</a>
+          <a class="button button-secondary" href={project.repo ?? '#'}>View repo</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <h2>Notable obstacles</h2>
+      <ul>
+        {project.challenges.map((challenge) => (
+          <li>{challenge}</li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="reveal">
+      <h2>What I learned</h2>
+      <ul>
+        {project.learnings.map((learning) => (
+          <li>{learning}</li>
+        ))}
+      </ul>
+    </section>
+
+    <div class="back-link">
+      <a href="/">← Back to home</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+.detail-page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+  display: grid;
+  gap: 3rem;
+}
+.detail-top-grid {
+  display: grid;
+  gap: 2rem;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 1.5rem;
+}
+.detail-media {
+  display: grid;
+  gap: 1.25rem;
+}
+.detail-copy {
+  display: grid;
+  gap: 1.25rem;
+}
+.screenshot-grid {
+  display: grid;
+  gap: 1rem;
+}
+.screenshot-grid img,
+.screenshot-placeholder {
+  width: 100%;
+  min-height: 220px;
+  border-radius: 1.25rem;
+  object-fit: cover;
+  background: #eef2ff;
+}
+.screenshot-placeholder {
+  display: grid;
+  place-items: center;
+  color: #475569;
+  padding: 2rem;
+  text-align: center;
+  border: 1px dashed rgba(148, 163, 184, 0.35);
+}
+.screenshot-placeholder p {
+  margin: 0 0 0.45rem;
+  font-weight: 700;
+}
+.screenshot-placeholder small {
+  color: #64748b;
+}
+.tech-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+.eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #2563eb;
+}
+.detail-copy h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 1.9vw, 3.4rem);
+}
+.intro {
+  margin: 1.25rem 0;
+  line-height: 1.75;
+  color: #475569;
+}
+.story {
+  margin: 0;
+  line-height: 1.85;
+  color: #475569;
+}
+.tech-list span {
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.15);
+  color: #334155;
+  font-size: 0.95rem;
+}
+.detail-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.button {
+  display: inline-flex;
+  padding: 0.95rem 1.35rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  color: white;
+  background: #2563eb;
+}
+.button-secondary {
+  background: #f8fafc;
+  color: #0f172a;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+}
+section h2 {
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+}
+ul {
+  list-style: disc inside;
+  margin: 0;
+  padding-left: 1.25rem;
+  color: #334155;
+  display: grid;
+  gap: 0.6rem;
+}
+.back-link a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+  @media (min-width: 900px) {
+    .detail-top-grid {
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: start;
+    }
+
+    .detail-media {
+      gap: 2rem;
+    }
+  }

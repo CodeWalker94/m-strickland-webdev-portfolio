@@ -1,11 +1,236 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/projects';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Junior Web Developer Portfolio">
+  <main>
+    <section class="hero reveal" id="home">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Faceless portfolio</p>
+        <h1>Clean, simple, and practical web development work.</h1>
+        <p>
+          I build responsive web apps with TypeScript, React, and modern frontend tools.
+          This portfolio focuses on the work rather than the selfie.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="#projects">View projects</a>
+          <a class="button button-secondary" href="#contact">Contact</a>
+        </div>
+      </div>
+      <div class="hero-panel reveal">
+        <div class="panel-card">
+          <h2>What this site shows</h2>
+          <ul>
+            <li>Project highlights with problems and learnings</li>
+            <li>Skills and tools used</li>
+            <li>Contact details for hiring or freelance work</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="about">
+      <div class="section-copy">
+        <p class="eyebrow">About</p>
+        <h2>Who I am as a developer</h2>
+        <p>
+          I enjoy turning ideas into useful interfaces. My work is focused on strong user experience,
+          responsive layouts, and clear technical decisions. I like building apps that are easy to use
+          and easy to maintain.
+        </p>
+      </div>
+    </section>
+
+    <section class="section reveal" id="skills">
+      <p class="eyebrow">Skills</p>
+      <h2>Tools and technologies I use</h2>
+      <div class="skill-grid">
+        <span>TypeScript</span>
+        <span>React</span>
+        <span>Next.js</span>
+        <span>Astro</span>
+        <span>Tailwind CSS</span>
+        <span>HTML & CSS</span>
+        <span>APIs</span>
+        <span>localStorage</span>
+      </div>
+      <p class="small-note">
+        Skills are shown as tools I’ve used. The project work explains what I built and how I solved problems.
+      </p>
+    </section>
+
+    <section class="section reveal" id="projects">
+      <div class="section-copy">
+        <p class="eyebrow">Projects</p>
+        <h2>Featured work</h2>
+        <p>
+          These three projects show how my work has grown from vanilla TypeScript to React and
+          Next.js, with real app logic and polish.
+        </p>
+      </div>
+      <div class="projects-grid">
+        {projects.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+    </section>
+
+    <section class="section reveal" id="contact">
+      <div class="section-copy">
+        <p class="eyebrow">Contact</p>
+        <h2>Let’s work together</h2>
+        <p>
+          For hiring, freelance work, or a quick chat about web development, reach out by email or phone.
+        </p>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <p class="contact-label">Email</p>
+          <a href="mailto:youremail@example.com">youremail@example.com</a>
+        </div>
+        <div>
+          <p class="contact-label">Phone</p>
+          <a href="tel:+1234567890">+1 (234) 567-890</a>
+        </div>
+        <div>
+          <p class="contact-label">Links</p>
+          <a href="#">GitHub</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>
+
+<style>
+.hero {
+  display: grid;
+  gap: 2rem;
+  padding: 4rem 1.5rem 2rem;
+}
+.hero-copy {
+  max-width: 680px;
+}
+.eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #2563eb;
+}
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.8rem, 4vw, 4.7rem);
+  line-height: 1.02;
+}
+.hero-copy p {
+  max-width: 620px;
+  line-height: 1.8;
+  color: #334155;
+  margin: 1.5rem 0 0;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+  background: #2563eb;
+  border-radius: 999px;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+}
+.button-secondary {
+  background: #f8fafc;
+  color: #0f172a;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+.hero-panel {
+  display: grid;
+  gap: 1rem;
+}
+.panel-card {
+  padding: 2rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(255, 255, 255, 0.95);
+}
+.panel-card h2 {
+  margin: 0 0 0.85rem;
+}
+.panel-card ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: #475569;
+}
+.panel-card li {
+  margin-bottom: 0.75rem;
+}
+.section {
+  padding: 3rem 1.5rem;
+}
+.section-copy {
+  max-width: 680px;
+}
+.section h2 {
+  margin: 0.5rem 0 1rem;
+  font-size: clamp(2rem, 2.5vw, 2.75rem);
+}
+.skill-grid {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  margin: 1.5rem 0 0;
+}
+.skill-grid span {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.95rem 1rem;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.1);
+  color: #0f172a;
+  font-weight: 600;
+}
+.small-note {
+  max-width: 720px;
+  margin-top: 1.25rem;
+  color: #475569;
+}
+.projects-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  margin-top: 2rem;
+}
+.contact-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  margin-top: 2rem;
+}
+.contact-label {
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+  color: #334155;
+}
+.contact-grid a {
+  display: block;
+  color: #0f172a;
+  text-decoration: none;
+}
+@media (min-width: 900px) {
+  .hero {
+    grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+    align-items: center;
+  }
+}
+</style>
