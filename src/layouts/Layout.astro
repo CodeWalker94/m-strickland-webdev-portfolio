@@ -1,5 +1,6 @@
 ---
 import ScrollReveal from '../components/ScrollReveal.astro';
+import ContactSection from '../components/ContactSection.astro';
 ---
 <!doctype html>
 <html lang="en">
@@ -15,7 +16,7 @@ import ScrollReveal from '../components/ScrollReveal.astro';
   <body>
     <div class="page-shell">
       <header class="site-header reveal">
-        <a class="brand" href="/">My WebDev Portfolio</a>
+        <a class="brand" href="/">Michael Strickland</a>
         <nav class="site-nav">
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
@@ -24,6 +25,7 @@ import ScrollReveal from '../components/ScrollReveal.astro';
         </nav>
       </header>
       <slot />
+      <ContactSection />
     </div>
     <ScrollReveal />
   </body>

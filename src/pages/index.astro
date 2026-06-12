@@ -2,66 +2,68 @@
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { projects } from '../data/projects';
+import herobg from '../assets/images/hero-bg.jpeg?url'
 ---
 
 <Layout title="Junior Web Developer Portfolio">
   <main>
     <section class="hero reveal" id="home">
-      <div class="hero-copy reveal">
-        <p class="eyebrow">Faceless portfolio</p>
-        <h1>Clean, simple, and practical web development work.</h1>
-        <p>
-          I build responsive web apps with TypeScript, React, and modern frontend tools.
-          This portfolio focuses on the work rather than the selfie.
-        </p>
-        <div class="hero-actions">
-          <a class="button" href="#projects">View projects</a>
-          <a class="button button-secondary" href="#contact">Contact</a>
+        <img class="hero-img" src={herobg} alt="">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Junior Web Developer</p>
+          <h1>Hi, I'm Michael</h1>
+          <h3> 
+            I'm a self taught frontend developer that likes to 
+            build apps around the things I actually care about, films, music, books, 
+            because I think the best way to learn is to build something you'd actually use.
+          </h3>
+          <div class="hero-actions">
+            <a class="button" href="#projects">View projects</a>
+            <a class="button button-secondary" href="#contact">Contact</a>
+          </div>
+        </div>
+    </section>
+
+    <section class="section about-section reveal" id="about">
+      <div class="split-section">
+        <div class="split-card title">
+          <p class="eyebrow">About Me</p>
+          <h2>Who I am<br>as a developer</h2>
+        </div>
+        <div class="split-card bento-side">
+          <div class="bento-grid">
+            <div class="bento-tile tile-origin">
+              <span class="tile-label">Origin</span>
+              <p>Before I got into web development I was headed toward data analytics. After enjoying SQL more than anything else, I realized I like to code. I needed something that still let me build and problem solve, so I started learning through Google Coursera as a safe pick.</p>
+            </div>
+            <div class="bento-tile tile-badge">
+              <p class="tile-stat">Self-Taught</p>
+              <p class="tile-sub">Frontend Developer</p>
+              <ul>
+                <li>Likes working with my hands</li>
+                <li>Love the creative freedom from it</li>
+                <li>Enjoys murder mysteries so loves the problem solving</li>
+              </ul>
+            </div>
+            <div class="bento-tile tile-drive">
+              <span class="tile-label">What clicked</span>
+              <p>I realized pretty quickly I enjoyed the SQL and coding parts more than anything else in the syllabus. The building aspect pulled me in harder than the rest. So I chose this path. One that lets me keep growing and make things that genuinely inspire me.</p>
+            </div>
+            <div class="bento-tile tile-stack">
+              <span class="tile-label">Working with</span>
+              <div class="tile-tags">
+                <span>TypeScript</span>
+                <span>React</span>
+                <span>Next.js</span>
+                <span>Astro</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="hero-panel reveal">
-        <div class="panel-card">
-          <h2>What this site shows</h2>
-          <ul>
-            <li>Project highlights with problems and learnings</li>
-            <li>Skills and tools used</li>
-            <li>Contact details for hiring or freelance work</li>
-          </ul>
-        </div>
-      </div>
     </section>
 
-    <section class="section reveal" id="about">
-      <div class="section-copy">
-        <p class="eyebrow">About</p>
-        <h2>Who I am as a developer</h2>
-        <p>
-          I enjoy turning ideas into useful interfaces. My work is focused on strong user experience,
-          responsive layouts, and clear technical decisions. I like building apps that are easy to use
-          and easy to maintain.
-        </p>
-      </div>
-    </section>
-
-    <section class="section reveal" id="skills">
-      <p class="eyebrow">Skills</p>
-      <h2>Tools and technologies I use</h2>
-      <div class="skill-grid">
-        <span>TypeScript</span>
-        <span>React</span>
-        <span>Next.js</span>
-        <span>Astro</span>
-        <span>Tailwind CSS</span>
-        <span>HTML & CSS</span>
-        <span>APIs</span>
-        <span>localStorage</span>
-      </div>
-      <p class="small-note">
-        Skills are shown as tools I’ve used. The project work explains what I built and how I solved problems.
-      </p>
-    </section>
-
-    <section class="section reveal" id="projects">
+      <section class="section projects-section reveal" id="projects">
       <div class="section-copy">
         <p class="eyebrow">Projects</p>
         <h2>Featured work</h2>
@@ -77,41 +79,78 @@ import { projects } from '../data/projects';
       </div>
     </section>
 
-    <section class="section reveal" id="contact">
-      <div class="section-copy">
-        <p class="eyebrow">Contact</p>
-        <h2>Let’s work together</h2>
-        <p>
-          For hiring, freelance work, or a quick chat about web development, reach out by email or phone.
-        </p>
-      </div>
-      <div class="contact-grid">
-        <div>
-          <p class="contact-label">Email</p>
-          <a href="mailto:youremail@example.com">youremail@example.com</a>
+    <section class="section approach-section reveal">
+      <div class="split-section split-reverse">
+        <div class="split-card title">
+          <p class="eyebrow">My Approach</p>
+          <h2>How I build</h2>
         </div>
-        <div>
-          <p class="contact-label">Phone</p>
-          <a href="tel:+1234567890">+1 (234) 567-890</a>
-        </div>
-        <div>
-          <p class="contact-label">Links</p>
-          <a href="#">GitHub</a>
-          <a href="#">LinkedIn</a>
+        <div class="split-card approach-copy">
+          <div class="approach-points">
+            <div class="approach-point">
+              <span class="point-num">01</span>
+              <div>
+                <strong>Start with something real</strong>
+                <p>Every project I've built started as something I actually wanted to use. That keeps the work honest and the decisions clear.</p>
+              </div>
+            </div>
+            <div class="approach-point">
+              <span class="point-num">02</span>
+              <div>
+                <strong>Get it working, then get it right</strong>
+                <p>I build iteratively. Shipping a rough version first teaches you more than planning it perfectly on paper.</p>
+              </div>
+            </div>
+            <div class="approach-point">
+              <span class="point-num">03</span>
+              <div>
+                <strong>Write code for the next person</strong>
+                <p>I name things clearly and keep logic easy to follow. Code is read far more than it's written.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+
+  
+
   </main>
 </Layout>
 
 <style>
 .hero {
-  display: grid;
-  gap: 2rem;
-  padding: 4rem 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 12, 28, 0.52);
+  z-index: 0;
+}
+.hero-bg {
+  position: relative;
+}
+
+.hero-img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
 }
 .hero-copy {
   max-width: 680px;
+  position: relative;
+  z-index: 1;
 }
 .eyebrow {
   margin: 0 0 1rem;
@@ -121,10 +160,19 @@ import { projects } from '../data/projects';
   text-transform: uppercase;
   color: #2563eb;
 }
+.hero .eyebrow {
+  color:#2563eb;
+}
 .hero h1 {
   margin: 0;
   font-size: clamp(2.8rem, 4vw, 4.7rem);
   line-height: 1.02;
+}
+.hero h3 {
+  color: #f4f2fb;
+}
+.hero h1, h3 {
+  color: white;
 }
 .hero-copy p {
   max-width: 620px;
@@ -138,6 +186,157 @@ import { projects } from '../data/projects';
   gap: 1rem;
   margin-top: 2rem;
 }
+.split-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3rem;
+  text-wrap: wrap;
+}
+.split-card {
+  width: 100%;
+}
+.section .title .eyebrow {
+  /* text-align: center;
+  font-size: 1rem; */
+}
+.section .title h2 {
+  font-size: 3.4rem;
+}
+.about-section {
+  background: #080d1a;
+}
+.about-section .eyebrow {
+  color: #2563eb;
+}
+.about-section .split-card.title h2 {
+  color: white;
+}
+.bento-side {
+  height: auto;
+}
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.bento-tile {
+  padding: 1.75rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(99, 179, 237, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+.bento-tile p {
+  color: #94a3b8;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 0.6rem 0 0;
+}
+.tile-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #2563eb;
+}
+.tile-badge {
+  background: rgba(37, 99, 235, 0.15);
+  border-color: rgba(37, 99, 235, 0.35);
+  justify-content: center;
+}
+.tile-stat {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: white;
+  margin: 0;
+  line-height: 1.2;
+}
+.tile-sub {
+  font-size: 0.85rem;
+  color: #93c5fd;
+  margin: 0.35rem 0 0;
+}
+.tile-badge ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.tile-badge li {
+  font-size: 0.82rem;
+  color: #93c5fd;
+  padding-left: 1rem;
+  position: relative;
+}
+.tile-badge li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: #2563eb;
+  font-weight: 700;
+}
+.tile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+.tile-tags span {
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.15);
+  color: #93c5fd;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.approach-section {
+  background: #0d1117;
+}
+.approach-section .eyebrow {
+  color: #d97706;
+}
+.approach-section .split-card.title h2 {
+  color: white;
+}
+.split-reverse {
+  flex-direction: row-reverse;
+}
+.approach-copy {
+  height: auto;
+}
+.approach-points {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.approach-point {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+.point-num {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #d97706;
+  letter-spacing: 0.1em;
+  padding-top: 0.25rem;
+  min-width: 2rem;
+}
+.approach-point strong {
+  display: block;
+  color: white;
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+}
+.approach-point p {
+  color: #94a3b8;
+  line-height: 1.7;
+  margin: 0;
+}
 .button {
   display: inline-flex;
   align-items: center;
@@ -148,6 +347,7 @@ import { projects } from '../data/projects';
   color: white;
   text-decoration: none;
   font-weight: 700;
+  cursor: pointer;
 }
 .button-secondary {
   background: #f8fafc;
@@ -210,22 +410,6 @@ import { projects } from '../data/projects';
   gap: 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   margin-top: 2rem;
-}
-.contact-grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  margin-top: 2rem;
-}
-.contact-label {
-  margin: 0 0 0.5rem;
-  font-weight: 700;
-  color: #334155;
-}
-.contact-grid a {
-  display: block;
-  color: #0f172a;
-  text-decoration: none;
 }
 @media (min-width: 900px) {
   .hero {

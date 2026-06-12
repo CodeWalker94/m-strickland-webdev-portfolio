@@ -1,0 +1,162 @@
+<section class="section contact-section" id="contact">
+  <div class="contact-layout">
+    <div class="contact-copy">
+      <h2>Contact</h2>
+      <h3>Let's work together</h3>
+      <p>
+        Have a project in mind, need a freelance developer, or just want to talk
+        web development? Send me a message and I'll get back to you.
+      </p>
+      <div class="contact-info">
+        <a href="mailto:stricklandmds@gmail.com">stricklandmds@gmail.com</a>
+        <a href="tel:4434750803">443-475-0803</a>
+        <a href="#" class="link-placeholder">Upwork &rarr;</a>
+        <a href="#" class="link-placeholder">LinkedIn &rarr;</a>
+      </div>
+    </div>
+
+    <form
+      class="contact-form"
+      action="https://api.web3forms.com/submit"
+      method="POST"
+    >
+      <input type="hidden" name="access_key" value="31bd5655-aa44-4da4-b02c-b943476500bd" />
+      <input type="hidden" name="subject" value="New Portfolio Contact" />
+      <input type="checkbox" name="botcheck" style="display:none" />
+
+      <div class="form-row">
+        <label class="form-field">
+          <span>Your Name</span>
+          <input type="text" name="name" placeholder="John Smith" required />
+        </label>
+        <label class="form-field">
+          <span>Email Address</span>
+          <input type="email" name="email" placeholder="john@example.com" required />
+        </label>
+      </div>
+
+      <label class="form-field">
+        <span>Your Message</span>
+        <textarea name="message" rows="5" placeholder="Type your message here" required></textarea>
+      </label>
+
+      <button class="contact-button" type="submit">Send message →</button>
+    </form>
+  </div>
+</section>
+
+<style>
+.contact-section {
+  padding: 4rem 1.5rem;
+  background: #080d1a;
+  border-top: none;
+}
+.contact-layout {
+  display: grid;
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.contact-copy h2 {
+  color: white;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  margin: 0 0 0.3rem;
+}
+.contact-copy h3 {
+  color: #93c5fd;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0 0 1rem;
+}
+.contact-copy p {
+  color: #94a3b8;
+  line-height: 1.75;
+  margin: 0;
+  max-width: 380px;
+}
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+.contact-info a {
+  color: #93c5fd;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+.contact-info a:hover {
+  color: white;
+}
+.link-placeholder {
+  opacity: 0.45;
+  pointer-events: none;
+}
+.contact-form {
+  display: grid;
+  gap: 1.25rem;
+}
+.form-row {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr 1fr;
+}
+.form-field {
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+.form-field input,
+.form-field textarea {
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 1rem;
+  font-family: inherit;
+  color: white;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: rgba(148, 163, 184, 0.45);
+}
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: #2563eb;
+}
+.form-field textarea {
+  resize: vertical;
+}
+.contact-button {
+  width: fit-content;
+  padding: 1rem 1.5rem;
+  border-radius: 999px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+@media (min-width: 900px) {
+  .contact-layout {
+    grid-template-columns: 1fr 1.4fr;
+    align-items: start;
+  }
+  .contact-copy {
+    border-right: 1px solid rgba(99, 179, 237, 0.15);
+    padding-right: 3rem;
+  }
+}
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

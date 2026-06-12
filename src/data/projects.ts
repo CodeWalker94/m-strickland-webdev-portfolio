@@ -1,3 +1,7 @@
+import booksAndCranniesScreenshot from "../assets/images/books-and-crannies-screenshot.png?url";
+import cinescopeScreenshot from "../assets/images/cinescope-screenshot.png?url";
+import playlistSorterScreenshot from "../assets/images/playlist-sorter-screenshot.png?url";
+
 export type Project = {
   slug: string;
   title: string;
@@ -25,19 +29,21 @@ export const projects: Project[] = [
       "Built a bookstore experience from scratch using only TypeScript, HTML, and CSS. The app supports saved books, filters, searches, and custom book creation without a framework.",
     story:
       "This was my first real JavaScript project. I built Books & Crannies to keep all my online book links in one place, with a visual library, custom book cards, and an active reading list. The experience taught me how to manage state across pages, handle localStorage persistence, and clean up duplicated logic through shared data modules.",
-    screenshots: [],
+    screenshots: [booksAndCranniesScreenshot],
     challenges: [
-      "Managing state and UI updates without React or a frontend framework.",
-      "Creating a mobile-friendly card interface with flip interactions and accessible controls.",
-      "Keeping saved collections synced and persistent in localStorage.",
+      "Mobile sidebar overlapped the hamburger button due to CSS stacking context, so I restructured the layout and used a header-height CSS variable.",
+      "Search and filter broke when combined because the filter ran on a pre-filtered array, so I rewrote it in vanilla JS to always use the full source data.",
+      "Saved books disappeared on refresh because the collection used a memory-only Set, so I moved persistence to localStorage with JSON rehydration.",
+      "GitHub Pages had no runtime after TypeScript migration because compiled JS was in .gitignore, so I committed the build output and fixed Linux filename casing.",
     ],
     learnings: [
-      "How to structure a medium-size app with modules and type-safe data models.",
-      "Practical use of localStorage for persistence and cross-tab sync.",
-      "The power of clean responsive layout and progressive enhancement.",
+      "z-index is controlled by stacking context, not absolute numbers.",
+      "Filter logic should always derive from the original source data.",
+      "Client-side persistence requires localStorage for reloads.",
+      "Static hosts need built assets, and filename casing matters in production.",
     ],
-    url: "#",
-    repo: "#",
+    url: "https://v0-books-and-crannies.vercel.app/",
+    repo: "https://github.com/CodeWalker94/books-and-crannies-js.git",
   },
   {
     slug: "cinescope",
@@ -49,24 +55,25 @@ export const projects: Project[] = [
     summary:
       "Built a streaming-inspired interface for browsing movies and TV shows with curated rows, hero content, and genre-focused discovery.",
     story:
-      "CineScope is my attempt to build a more polished, visually rich app similar to Firestick or Roku. I focused on layout, hero content, and category accuracy so that Movies, TV, and Animation felt separate but integrated. This project taught me how to handle API-driven UIs and build a more compelling browsing experience.",
-    screenshots: [],
+      "CineScope is my attempt to build a more polished, visually rich discovery hub app similar to Firestick or Roku. I focused on layout, hero content, and category accuracy so that Movies, TV, and Animation felt separate but integrated. This project taught me how to handle API-driven UIs and build a more compelling browsing experience.",
+    screenshots: [cinescopeScreenshot],
     challenges: [
-      "Balancing API requests while keeping content fresh and performant.",
-      "Maintaining genre accuracy for curated shelves across multiple content categories.",
-      "Designing a responsive carousel layout that feels polished on desktop and mobile.",
+      "TMDB genre rows showed wrong content, so I added JS genre filters, exclusion lists, and a primary genre check for accurate shelves.",
+      "Tab switches caused stale API results to overwrite fresh data, so I used React useEffect cleanup cancel flags plus a shared request cache.",
+      "Mobile carousel cards clipped on hover, so I used useLayoutEffect to measure card width and inject edge padding via a CSS variable.",
     ],
     learnings: [
-      "How to build reusable React components for a scalable UI.",
-      "The importance of cache-friendly data fetching and minimal network calls.",
-      "Crafting a polished browsing experience with responsive layout and clear content hierarchy.",
+      "useLayoutEffect is the right hook for DOM measurement before paint.",
+      "useEffect dependencies compare by reference, so stable primitives are essential.",
+      "APIs need client-side safety nets when raw results are inconsistent.",
+      "Async React needs cancel cleanup and shared request caching to avoid stale updates.",
     ],
-    url: "#",
-    repo: "#",
+    url: "https://cinescope-puce.vercel.app/",
+    repo: "https://github.com/CodeWalker94/cinescope.git",
   },
   {
-    slug: "youtube-playlist-sorter",
-    title: "YouTube Playlist Sorter",
+    slug: "playlist-sorter-for-youtube",
+    title: "Playlist Sorter For YouTube",
     description:
       "A Next.js dashboard for loading, sorting, and saving YouTube playlists with Google OAuth.",
     role: "Next.js, TypeScript, YouTube API",
@@ -75,19 +82,21 @@ export const projects: Project[] = [
       "Built a playlist management app that connects to YouTube, loads playlist content, and lets users sort and save playlists with minimal friction.",
     story:
       "YouTube Playlist Sorter solves a real pain point: sorting and curating large playlists when YouTube does not make it easy. Building this taught me how to work with OAuth, paginated API responses, and playlist item workflows while handling common API edge cases like 401 and 404 errors.",
-    screenshots: [],
+    screenshots: [playlistSorterScreenshot],
     challenges: [
-      "Working with paginated YouTube API responses and playlist item IDs.",
-      "Implementing authentication and token refresh with Google OAuth.",
-      "Designing a dashboard workflow for multi-select, sorting, and saving playlist items.",
+      "Select All showed 1 because stale sessionStorage stripped entryId. I bumped the cache version and added a TypeScript shape check.",
+      "YouTube playlist items use item.id for slot and videoId for content, so I separated them and kept them distinct with a JS Map.",
+      "Auth expired after an hour because NextAuth did not refresh Google tokens. I added refreshAccessToken in the NextAuth jwt callback and offline consent to the auth flow.",
+      "Sort only covered 50 playlists because YouTube paginates. I fetched all pages in a TypeScript do/while loop and used AbortController cleanup.",
     ],
     learnings: [
-      "How to use Next.js App Router with client-side hooks for interactivity.",
-      "When to use localStorage and sessionStorage for app state persistence.",
-      "Building a data-heavy UI that still feels clean and usable.",
+      "Version your cache keys and validate stored data before use.",
+      "item.id is the playlist slot, videoId is the video. They are not interchangeable.",
+      "Google OAuth refresh requires access_type offline and prompt consent.",
+      "Paginated APIs must be fully fetched before client-side sorting.",
     ],
-    url: "#",
-    repo: "#",
+    url: "https://playlist-sorter-for-youtube.vercel.app/",
+    repo: "https://github.com/CodeWalker94/playlist-sorter-for-youtube.git",
   },
 ];
 
