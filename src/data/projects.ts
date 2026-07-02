@@ -67,7 +67,7 @@ export const projects: Project[] = [
     challenges: [
       "The quick-view modal needed the exact same variant/stock logic as the product page, so I extracted a shared snippet both render, instead of maintaining two copies that kept drifting out of sync.",
       "Interactive behavior was scattered across per-section script bundles with hidden cross-dependencies (one bundle calling a global defined in another), which caused real bugs like the cart page only updating on refresh. I consolidated everything into one deferred, event-delegated JavaScript file.",
-      "A packaging script for the sellable version of the theme was silently corrupting UTF-8 text (encoding mismatch) and writing invalid zip paths (Windows path separators vs. Shopify's required forward slashes) — both required tracing the actual bytes, not just the visible symptoms, to fix.",
+      "A packaging script for the sellable version of the theme was silently corrupting UTF-8 text (encoding mismatch) and writing invalid zip paths (Windows path separators vs. Shopify's required forward slashes). Both required tracing the actual bytes, not just the visible symptoms, to fix.",
     ],
     learnings: [
       "Liquid's sections/snippets/blocks map closely to React's component structure: sections are page-level components, snippets are reusable child components with props passed through render.",
