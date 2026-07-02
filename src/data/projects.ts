@@ -1,6 +1,9 @@
 import booksAndCranniesScreenshot from "../assets/images/books-and-crannies-screenshot.png?url";
 import cinescopeScreenshot from "../assets/images/cinescope-screenshot.png?url";
 import playlistSorterScreenshot from "../assets/images/playlist-sorter-screenshot.png?url";
+import vortrixHomepageScreenshot from "../assets/images/Vortrix-homepage-screenshot.png?url";
+import vortrixFeaturedScreenshot from "../assets/images/Vortrix-featured-page-screenshot.png?url";
+import vortrixProductScreenshot from "../assets/images/Vortrix-product-page-screenshot.png?url";
 
 export type Project = {
   slug: string;
@@ -44,6 +47,37 @@ export const projects: Project[] = [
     ],
     url: "https://v0-books-and-crannies.vercel.app/",
     repo: "https://github.com/CodeWalker94/books-and-crannies-js.git",
+  },
+  {
+    slug: "vortrix",
+    title: "VORTRIX",
+    description:
+      "A custom Shopify theme built from the ground up on Skeleton (not a Dawn reskin), with an AJAX cart, a quick-view modal, and predictive search.",
+    role: "Shopify Liquid, JavaScript, CSS architecture",
+    tech: ["Liquid", "Shopify CLI", "JavaScript", "CSS"],
+    summary:
+      "A premium snowboard/outdoor-gear theme with a fully AJAX cart drawer, a quick-view modal that reuses the product page's real variant logic, cascading size/color availability, and a predictive search dropdown, built on Shopify's Skeleton base so it's eligible for the official Theme Store.",
+    story:
+      "VORTRIX started as a way to learn Shopify theme development seriously rather than customize a template. I built every section from scratch: a mega menu, faceted collection filtering, a cart drawer with optimistic UI, and a quick-view modal. Midway through I hit a wall familiar from any codebase that grows fast: the quick-view modal duplicated the product page's variant logic, and that duplication kept causing the same bugs to resurface in two places. I refactored the theme around a shared-component model, extracting the buy logic into one snippet both the page and the modal render, and consolidating scattered inline scripts into a single event-delegated JS file. That refactor taught me more about maintainable architecture than the original build did.",
+    screenshots: [
+      vortrixHomepageScreenshot,
+      vortrixFeaturedScreenshot,
+      vortrixProductScreenshot,
+    ],
+    challenges: [
+      "The quick-view modal needed the exact same variant/stock logic as the product page, so I extracted a shared snippet both render, instead of maintaining two copies that kept drifting out of sync.",
+      "Interactive behavior was scattered across per-section script bundles with hidden cross-dependencies (one bundle calling a global defined in another), which caused real bugs like the cart page only updating on refresh. I consolidated everything into one deferred, event-delegated JavaScript file.",
+      "A packaging script for the sellable version of the theme was silently corrupting UTF-8 text (encoding mismatch) and writing invalid zip paths (Windows path separators vs. Shopify's required forward slashes) — both required tracing the actual bytes, not just the visible symptoms, to fix.",
+    ],
+    learnings: [
+      "Liquid's sections/snippets/blocks map closely to React's component structure: sections are page-level components, snippets are reusable child components with props passed through render.",
+      "Recognizing that parallel is what pushed me to restructure the file layout, moving shared CSS and JS out of per-section stylesheets into one global file instead of duplicating styles and logic per page.",
+      "Duplication should be caught and extracted at the first copy, not the second bug report.",
+      "Event delegation (binding to a stable parent, not the element itself) is what makes AJAX-injected content work without manual rebinding.",
+      "Script execution order (defer vs. inline, DOMContentLoaded timing) causes real, hard-to-spot bugs when one script depends on another.",
+    ],
+    url: "https://smartflow-dev-store.myshopify.com/",
+    repo: "https://github.com/CodeWalker94/vortrix-ecommerce-theme",
   },
   {
     slug: "cinescope",
