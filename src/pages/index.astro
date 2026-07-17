@@ -80,32 +80,40 @@ import herobg from '../assets/images/hero-bg.jpeg?url'
     </section>
 
     <section class="section approach-section reveal">
-      <div class="split-section split-reverse">
+      <div class="split-section">
         <div class="split-card title">
           <p class="eyebrow">My Approach</p>
           <h2>How I build</h2>
+          <p class="approach-bio">I'm a frontend developer who likes keeping things lean and organized. I write as little code as I can get away with, lean on a small set of sources of truth, and check my work in a live browser as I go. Before I call anything done, I use it like a real user would and look for what could be cleaner, clearer, or better.</p>
         </div>
         <div class="split-card approach-copy">
           <div class="approach-points">
             <div class="approach-point">
               <span class="point-num">01</span>
               <div>
-                <strong>Start with something real</strong>
-                <p>Every project I've built started as something I actually wanted to use. That keeps the work honest and the decisions clear.</p>
+                <strong>Write less, break less</strong>
+                <p>I aim for the fewest lines and the fewest sources of truth to branch from, so a change in one file doesn't ripple errors into the others.</p>
               </div>
             </div>
             <div class="approach-point">
               <span class="point-num">02</span>
               <div>
-                <strong>Get it working, then get it right</strong>
-                <p>I build iteratively. Shipping a rough version first teaches you more than planning it perfectly on paper.</p>
+                <strong>Structure before I build</strong>
+                <p>I sort the architecture into clear sections up front. It gives me a map to plan around and makes tracking down bugs a lot faster.</p>
               </div>
             </div>
             <div class="approach-point">
               <span class="point-num">03</span>
               <div>
-                <strong>Write code for the next person</strong>
-                <p>I name things clearly and keep logic easy to follow. Code is read far more than it's written.</p>
+                <strong>Debug live as I go</strong>
+                <p>I keep a live server running and watch the page as I work, catching anything that breaks in functionality or on smaller screens the moment it happens.</p>
+              </div>
+            </div>
+            <div class="approach-point">
+              <span class="point-num">04</span>
+              <div>
+                <strong>Test it like a user</strong>
+                <p>I go back through my own work as if I'm the one using it, leaning on my experience and other people's to spot what's missing or worth improving.</p>
               </div>
             </div>
           </div>
@@ -302,8 +310,11 @@ import herobg from '../assets/images/hero-bg.jpeg?url'
 .approach-section .split-card.title h2 {
   color: white;
 }
-.split-reverse {
-  flex-direction: row-reverse;
+.approach-bio {
+  color: #94a3b8;
+  line-height: 1.8;
+  max-width: 46ch;
+  margin: 1.5rem 0 0;
 }
 .approach-copy {
   height: auto;

@@ -20,8 +20,12 @@ if (!project) {
       <div class="detail-media reveal">
         <div class="screenshot-grid">
           {project.screenshots && project.screenshots.length > 0 ? (
-            project.screenshots.map((src) => (
-              <img src={src} alt={`${project.title} screenshot`} />
+            project.screenshots.map((shot) => (
+              <img
+                src={shot.src}
+                alt={`${project.title} screenshot`}
+                style={shot.position ? `object-position: ${shot.position}` : undefined}
+              />
             ))
           ) : (
             <div class="screenshot-placeholder">
