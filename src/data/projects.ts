@@ -1,6 +1,15 @@
 import booksAndCranniesScreenshot from "../assets/images/books-and-crannies-screenshot.png?url";
+import booksAndCranniesScreenshot2 from "../assets/images/books-and-crannies-2.png?url";
+import booksAndCranniesScreenshot3 from "../assets/images/books-and-crannies-3.png?url";
+
 import cinescopeScreenshot from "../assets/images/cinescope-screenshot.png?url";
+import cinescopeScreenshot2 from "../assets/images/cinescope2-screenshot.png?url";
+import cinescopeScreenshot3 from "../assets/images/cinescope3-screenshot.png?url";
+
 import playlistSorterScreenshot from "../assets/images/playlist-sorter-screenshot.png?url";
+import playlistSorterScreenshot2 from "../assets/images/PlaylistSorter-for-YouTube2.png?url";
+import playlistSorterScreenshot3 from "../assets/images/PlaylistSorter-for-YouTube3.png?url";
+
 import vortrixHomepageScreenshot from "../assets/images/Vortrix-homepage-screenshot.png?url";
 import vortrixFeaturedScreenshot from "../assets/images/Vortrix-featured-page-screenshot.png?url";
 import vortrixProductScreenshot from "../assets/images/Vortrix-product-page-screenshot.png?url";
@@ -44,9 +53,9 @@ export const projects: Project[] = [
     tech: ["PHP", "Custom Post Types", "WP_Query", "Vanilla JS", "CSS"],
     stack: ["WordPress", "PHP"],
     summary:
-      "A complete website for a landscaping company: custom Services and Projects sections, a filterable photo gallery with a full-screen lightbox, an About page with a company timeline, a blog, and a quote request form. Live on real hosting.",
+      "A complete website for a mockup landscaping company that has custom Services and Projects sections, a filterable photo gallery with a full-screen lightbox, an About page with a company timeline, a blog, and a quote request form. Live on real hosting.",
     story:
-      "My first WordPress theme, built from a blank folder instead of a starter template or page builder, so I'd actually understand how WordPress works under the hood. It includes a filterable project gallery with a lightbox, a company timeline, a blog, and a quote form with server-side validation. Deploying it to free hosting meant migrating the database and files by hand instead of using a one-click installer.",
+      "My first WordPress theme, built from a blank folder instead of a starter template or page builder, so I'd actually understand how WordPress works under the hood. It includes a filterable project gallery with a lightbox, a company timeline, a blog, and a quote form with server-side validation. The real work was learning how WordPress is constructed and how content is handled being put on the site with how the Loop and its built-in functions pull in content, and how the PHP behind it all maps back to the JavaScript I already knew.",
     screenshots: [
       { src: cedarStoneHomeScreenshot},
       // Full-page shots: default "top" would show only the hero, so aim each crop
@@ -55,49 +64,18 @@ export const projects: Project[] = [
       { src: cedarStoneWorkScreenshot, position: "center 20%" }, // filter pills + masonry grid
     ],
     challenges: [
-      "The project gallery duplicated itself on load. Fixed a race condition so the setup script only seeds it once.",
-      "Filtering the gallery sometimes left tiles invisible. Fixed a conflict between the filter and the scroll-in animation.",
-      "The Services page returned a 404. Corrected a mismatched URL and cleared WordPress's cached links.",
-      "Menu links and the call-to-action button were invisible on mobile because a CSS rule was overriding their color. Scoped the style so it only affects what it should.",
-      "The free host's 10MB upload limit broke the one-click migration tool. Migrated manually instead: a database import plus a direct file transfer.",
+      "A single misspelled letter in an add_action() function name made WordPress register nothing and throw no error, which taught me PHP quietly ignores bad string callbacks and to check hook names before doubting my logic.",
+      "I built Services and Projects as custom post types and used the ACF plugin for their extra fields, learning that a plugin adds the editing boxes in wp-admin while the values themselves live in the database.",
+      "The Services archive kept returning a styled 404 while the code looked correct, which taught me WordPress caches its routing table and needs a permalinks flush after any change to a URL.",
     ],
     learnings: [
-      "A blank page and a 404 mean two different things in WordPress. Learning to tell them apart cuts debugging time in half.",
-      "Background tasks can run twice if you don't guard against it. Repeat-safe operations should be the default, not an afterthought.",
-      "Broad CSS selectors can quietly override more specific styles elsewhere on the page.",
-      "PHP fails silently on typos. A misspelled function name just does nothing, no error to point you at it.",
-      "Hosting limits shape how you deploy. Know your host's constraints before you plan the migration.",
+      "Moving from JavaScript to PHP is mostly translation: add_action() works like addEventListener, and one PHP array does the job of both a JS array and an object.",
+      "PHP fails quietly where JavaScript fails loudly, so when nothing happens at all, suspect a spelling mismatch before broken logic.",
+      "WordPress picks the template file from the URL through the template hierarchy, so learning that map is learning where to write your code.",
+      "Built-in functions like the_title() read from a global current post that the Loop sets first, closer to React context than to passing arguments.",
     ],
     url: "https://cedar-and-stone.byethost18.com",
     repo: "https://github.com/CodeWalker94/cedar-stone-theme.git",
-  },
-  {
-    slug: "books-and-crannies",
-    title: "Books & Crannies",
-    description:
-      "A TypeScript bookstore with saved collections, search, and custom book management.",
-    role: "Vanilla TypeScript, HTML, CSS",
-    tech: ["TypeScript", "localStorage", "Responsive Design", "DOM APIs"],
-    stack: ["TypeScript"],
-    summary:
-      "A bookstore app built from scratch in TypeScript, HTML, and CSS, no framework. Supports saved collections, search, filtering, and custom book entries.",
-    story:
-      "My first real JavaScript project, built to keep all my online book links organized in one place with a visual library and an active reading list. It taught me how to manage state across pages, persist data with localStorage, and clean up duplicated logic into shared modules.",
-    screenshots: [{ src: booksAndCranniesScreenshot }],
-    challenges: [
-      "The mobile sidebar overlapped the menu button. Fixed a CSS layering issue with a shared layout variable.",
-      "Search and filters broke when combined. Rewrote the logic so filters always start from the full book list.",
-      "Saved books vanished on refresh. Added localStorage persistence so the list survives a reload.",
-      "The live site broke after switching to TypeScript. Fixed the build setup so the compiled files actually ship.",
-    ],
-    learnings: [
-      "Layering issues come from stacking context, not just z-index numbers.",
-      "Filter logic should always derive from the original source data.",
-      "Client-side state needs localStorage to survive a page reload.",
-      "Static hosting needs the actual built files, and filename casing matters in production.",
-    ],
-    url: "https://v0-books-and-crannies.vercel.app/",
-    repo: "https://github.com/CodeWalker94/books-and-crannies-js.git",
   },
   {
     slug: "vortrix",
@@ -143,7 +121,11 @@ export const projects: Project[] = [
       "Built a streaming-inspired interface for browsing movies and TV shows with curated rows, hero content, and genre-focused discovery.",
     story:
       "CineScope is my attempt to build a more polished, visually rich discovery hub app similar to Firestick or Roku. I focused on layout, hero content, and category accuracy so that Movies, TV, and Animation felt separate but integrated. This project taught me how to handle API-driven UIs and build a more compelling browsing experience.",
-    screenshots: [{ src: cinescopeScreenshot }],
+    screenshots: [
+      { src: cinescopeScreenshot },
+      { src: cinescopeScreenshot2 },
+      { src: cinescopeScreenshot3 },
+    ],
     challenges: [
       "TMDB genre rows showed wrong content, so I added JS genre filters, exclusion lists, and a primary genre check for accurate shelves.",
       "Tab switches caused stale API results to overwrite fresh data, so I used React useEffect cleanup cancel flags plus a shared request cache.",
@@ -170,7 +152,11 @@ export const projects: Project[] = [
       "Built a playlist management app that connects to YouTube, loads playlist content, and lets users sort and save playlists with minimal friction.",
     story:
       "YouTube Playlist Sorter solves a real pain point: sorting and curating large playlists when YouTube does not make it easy. Building this taught me how to work with OAuth, paginated API responses, and playlist item workflows while handling common API edge cases like 401 and 404 errors.",
-    screenshots: [{ src: playlistSorterScreenshot }],
+    screenshots: [
+      { src: playlistSorterScreenshot },
+      { src: playlistSorterScreenshot2 },
+      { src: playlistSorterScreenshot3 }
+    ],
     challenges: [
       "Select All showed 1 because stale sessionStorage stripped entryId. I bumped the cache version and added a TypeScript shape check.",
       "YouTube playlist items use item.id for slot and videoId for content, so I separated them and kept them distinct with a JS Map.",
@@ -185,6 +171,38 @@ export const projects: Project[] = [
     ],
     url: "https://playlist-sorter-for-youtube.vercel.app/",
     repo: "https://github.com/CodeWalker94/playlist-sorter-for-youtube.git",
+  },
+  {
+    slug: "books-and-crannies",
+    title: "Books & Crannies",
+    description:
+      "A TypeScript bookstore with saved collections, search, and custom book management.",
+    role: "Vanilla TypeScript, HTML, CSS",
+    tech: ["TypeScript", "localStorage", "Responsive Design", "DOM APIs"],
+    stack: ["TypeScript"],
+    summary:
+      "A bookstore app built from scratch in TypeScript, HTML, and CSS, no framework. Supports saved collections, search, filtering, and custom book entries.",
+    story:
+      "My first real JavaScript project, built to keep all my online book links organized in one place with a visual library and an active reading list. It taught me how to manage state across pages, persist data with localStorage, and clean up duplicated logic into shared modules.",
+    screenshots: [
+      { src: booksAndCranniesScreenshot },
+      { src: booksAndCranniesScreenshot2},
+      { src: booksAndCranniesScreenshot3}
+    ],
+    challenges: [
+      "The mobile sidebar overlapped the menu button. Fixed a CSS layering issue with a shared layout variable.",
+      "Search and filters broke when combined. Rewrote the logic so filters always start from the full book list.",
+      "Saved books vanished on refresh. Added localStorage persistence so the list survives a reload.",
+      "The live site broke after switching to TypeScript. Fixed the build setup so the compiled files actually ship.",
+    ],
+    learnings: [
+      "Layering issues come from stacking context, not just z-index numbers.",
+      "Filter logic should always derive from the original source data.",
+      "Client-side state needs localStorage to survive a page reload.",
+      "Static hosting needs the actual built files, and filename casing matters in production.",
+    ],
+    url: "https://v0-books-and-crannies.vercel.app/",
+    repo: "https://github.com/CodeWalker94/books-and-crannies-js.git",
   },
 ];
 

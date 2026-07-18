@@ -48,8 +48,12 @@ if (!project) {
         <p class="intro">{project.summary}</p>
         <p class="story">{project.story}</p>
         <div class="detail-links">
-          <a class="button" href={project.url ?? '#'}>Live demo</a>
-          <a class="button button-secondary" href={project.repo ?? '#'}>View repo</a>
+          {project.url && (
+            <a class="button" href={project.url} target="_blank" rel="noopener noreferrer">Live demo</a>
+          )}
+          {project.repo && (
+            <a class="button button-secondary" href={project.repo} target="_blank" rel="noopener noreferrer">View repo</a>
+          )}
         </div>
       </div>
     </section>
